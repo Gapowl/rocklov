@@ -1,0 +1,35 @@
+---
+- title: Senha incorreta
+  payload:
+    email: alan@ig.com
+    password: alan125
+  code: 401
+  error: Unauthorized
+- title: Email nao cadastrado
+  payload:
+    email: alan@gmail.com
+    password: alan123
+  code: 401
+  error: Unauthorized
+- title: Email em branco
+  payload:
+    email: ''
+    password: alan123
+  code: 412
+  error: required email
+- title: Sem o campo Email
+  payload:
+    password: alan123
+  code: 412
+  error: required email
+- title: Senha em branco
+  payload:
+    email: alan@ig.com
+    password: ''
+  code: 412
+  error: required password
+- title: Sem o campo senha
+  payload:
+    email: alan@ig.com
+  code: 412
+  error: required password

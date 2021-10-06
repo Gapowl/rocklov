@@ -1,0 +1,19 @@
+---
+default: --publish-quiet -p bdd -p allure -p local -p chrome
+# Formato de pretty - Padrao do cucumber
+bdd: -f pretty
+# Formato de pontinhos
+dots: -f progress
+# Formato de html
+html: -f html -o logs/report.html
+# Formato de Allure
+allure: --format AllureCucumber::CucumberFormatter --out=logs
+# config local do aplicativo
+local: CONFIG=local.yml
+# config de homologacao do aplicativo
+hmg: CONFIG=hmg.yml
+# configuracoes de browsers
+firefox: BROWSER=firefox
+fire_headless: BROWSER=fire_headless
+chrome: BROWSER=chrome
+chrome_headless: BROWSER=chrome_headless
