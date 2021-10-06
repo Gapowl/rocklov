@@ -1,1 +1,0 @@
-Estudo do curso Automcao 180 do https://qaninja.academy/home
