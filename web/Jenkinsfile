@@ -1,0 +1,37 @@
+pipeline {
+    agent {
+        docker {
+            image 'qaninja/ruby-web-agent'
+            args '--network rocklov-network'
+        }
+    }
+
+    stages {
+        stage('Preparation') {
+            steps {
+                sh 'cd web && bundler install'
+            }
+        }
+        stage('Testing') {
+            steps {
+                sh 'cd web && rake local_seeds_jenkins'
+            }
+        }
+        stage('UAT'){
+            steps{
+                echo 'Aguardando teste de aceitacao.'
+                input message: 'Podemos ir pra producao?'
+            }
+        }
+        stage('Prod'){
+            steps{
+                echo 'Webapp pronta para producao'
+            }
+        }
+    }
+    post {
+        always {
+            echo 'todo'
+        }
+    }
+}

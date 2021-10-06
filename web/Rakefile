@@ -23,6 +23,23 @@ task :local_seeds do
   sh "cucumber"
 end
 
+task :local_seeds_jenkins do
+    CONFIG = YAML.load_file(File.join(Dir.pwd, "features/support/config/local.yml"))
+  users = [
+    { name: "Roberto Augusto", email: "augusto@ig.com", password: to_md5("123123") },
+    { name: "Gabriel Rocha", email: "gabiru@ig.com", password: to_md5("123123") },
+    { name: "Jose Marcio", email: "marcio@anunciante.com", password: to_md5("123123") },
+    { name: "Klelio Rico", email: "klerico@locatario.com", password: to_md5("123123") },
+    { name: "Gabriel Cardoso", email: "gabriel@gmail.com", password: to_md5("678901") }
+  ]
+
+  MongoDB.new.drop_danger
+  MongoDB.new.insert_users(users)
+
+  puts "Seeds semeadas :)"
+  sh "cucumber -p jenkins"
+end
+
 
 task :hmg_seeds do
     CONFIG = YAML.load_file(File.join(Dir.pwd, "features/support/config/hmg.yml"))

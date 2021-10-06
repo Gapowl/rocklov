@@ -1,5 +1,7 @@
 ---
 default: --publish-quiet -p bdd -p allure -p local -p chrome
+#defult para o jenkins
+jenkins: --publish-quiet -p bdd -p allure -p local -p chrome_headless
 # Formato de pretty - Padrao do cucumber
 bdd: -f pretty
 # Formato de pontinhos
